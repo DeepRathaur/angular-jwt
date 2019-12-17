@@ -9,15 +9,21 @@ import { UserService, AuthenticationService } from '../_services';
 })
 export class HomeComponent implements OnInit {
   loading = false;
-  users: User[];
+  currentUser: User;
+  userFromApi: User;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private authenticationService: AuthenticationService
+  ) {
+    this.currentUser = this.authenticationService.currentUserValue;
+  }
 
   ngOnInit() {
     this.loading = true;
-    this.userService.getAll().pipe(first()).subscribe(users => {
+    this.userService.getById(this.currentUser.id).pipe(first()).subscribe(user => {
       this.loading = false;
-      this.users = users;
+      this.userFromApi = user;
     });
   }
 

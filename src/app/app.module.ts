@@ -9,13 +9,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor, fakeBackendProvider, JwtInterceptor } from './_helpers';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
